@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focus Study Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Focus Study Timer</h1>
+            <button class="toogle-dark" id="theme">
+                <p class="modeName">Light</p>
+                <img src="./images/sun-icon.svg" id="mode-icon" alt="">
+            </button>
+        </header>
+
+        <main class="main-content">
+            <div class="left-section">
+                <div class="timer-box">
+                    <div class="timer-controls">
+                        <button id="decrease-time" class="control-btn">-</button>
+                        <span id="time">25:00</span>
+                        <button id="increase-time" class="control-btn">+</button>
+                    </div>
+                    <div class="buttons">
+                        <button id="start" class="main-btn">Start</button>
+                        <button id="pause" class="main-btn" style="display: none;">Pause</button>
+                        <button id="continue" class="main-btn" style="display: none;">Continue</button>
+                        <button id="reset" class="main-btn" style="display: none;">Reset</button>
+                    </div>
+                    <div class="focus-animation" id="focus-animation"></div>
+                    <div class="break" id="break" style="display: none;">
+                        <h2>Break Time!</h2>
+                        <div class="break-timer">
+                            <span id="break-time">05:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-box">
+                    <div class="music-controls">
+                        <div class="controls">
+                            <button id="previous-song" class="control-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <path
+                                        d="M267.5 440.6c9.5 7.9 22.8 9.7 34.1 4.4s18.4-16.6 18.4-29V96c0-12.4-7.2-23.7-18.4-29s-24.5-3.6-34.1 4.4l-192 160L64 241V96c0-17.7-14.3-32-32-32S0 78.3 0 96V416c0 17.7 14.3 32 32 32s32-14.3 32-32V271l11.5 9.6 192 160z" />
+                                </svg>
+                            </button>
+                            <button class="pause-song control-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <path
+                                        d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z" />
+                                </svg>
+                            </button>
+                            <button class="play-song control-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <path
+                                        d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z" />
+                                </svg>
+                            </button>
+                            <button id="next-song" class="control-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                    <path
+                                        d="M52.5 440.6c-9.5 7.9-22.8 9.7-34.1 4.4S0 428.4 0 416V96C0 83.6 7.2 72.3 18.4 67s24.5-3.6 34.1 4.4l192 160L256 241V96c0-17.7 14.3-32 32-32s32 14.3 32 32V416c0 17.7-14.3 32-32 32s-32-14.3-32-32V271l-11.5 9.6-192 160z" />
+                                </svg>
+                            </button>
+                            <button id="shuffle" class="control-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V160H352c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96h32V64c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V416H352c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8h32V320c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <ul id="music-list"></ul>
+                        <input type="file" id="file-input" accept=".mp3,.mkv,audio/*" multiple>
+                    </div>
+                    <button id="add-music" class="main-btn">Add Music</button>
+                </div>
+            </div>
+
+            <div class="todo-container">
+                <h2>To-Do List</h2>
+                <div class="todo-input">
+                    <input type="text" id="new-task" placeholder="Add a new task">
+                    <button id="add-task" class="main-btn">Add Task</button>
+                </div>
+                <ul id="task-list"></ul>
+            </div>
+        </main>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

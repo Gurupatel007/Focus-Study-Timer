@@ -1,0 +1,382 @@
+:root {
+    --background-gradient: linear-gradient(to right, #1e2d3b, #2d4252, #3a5369);
+    --container-bg: rgba(24, 32, 40, 0.95);
+    --container-text: #e0e0e0;
+    --primary-color: #5e8dab;
+    --primary-color-hover: #486b84;
+    --task-bg: #21323f;
+    --task-completed-bg: #36495d;
+    --task-text: #e0e0e0;
+    --task-completed-text: #c5c5c5;
+    --music-bg: #21323f;
+    --box-shadow: 0 10px 20px rgba(77, 77, 77, 0.2);
+    --border: 1px solid #384956;
+}
+
+.light {
+    --background-gradient: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    --container-bg: rgba(255, 255, 255, 0.9);
+    --container-text: #333;
+    --primary-color: #333;
+    --primary-color-hover: #555;
+    --task-bg: #f9f9f9;
+    --task-completed-bg: #e0e0e0;
+    --task-text: #333;
+    --music-bg: #f0f0f0;
+    --task-completed-text: #888;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.266);
+    --border: 1px solid #ccc;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-gradient);
+    margin: 0;
+    color: var(--container-text);
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background: var(--container-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    max-width: 1200px;
+    width: 100%;
+    color: var(--container-text);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--container-text);
+}
+
+#theme {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 120px;
+    width: 15%;
+    height: 40px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    padding: 0 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#theme:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#theme p {
+    font-size: large;
+    margin: 0;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    color: var(--container-bg);
+}
+
+#theme img {
+    width: auto;
+    height: 24px;
+    filter: invert(100%);
+    /* Invert the color of the icon for better visibility */
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.timer-box,
+.music-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--container-bg);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-controls,
+.music-controls .controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.control-btn {
+    font-size: 24px;
+    padding: 10px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--container-bg);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.control-btn:hover {
+    background: var(--primary-color-hover);
+}
+
+.buttons {
+    margin-bottom: 30px;
+    font-family: space Mono;
+}
+
+.main-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 25px;
+    background: var(--primary-color);
+    color: var(--container-bg);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: space Mono;
+}
+
+.main-btn:hover {
+    background: var(--primary-color-hover);
+}
+
+.focus-animation {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 0;
+    border-radius: 50%;
+    transition: height 1s ease, background-color 1s ease;
+    z-index: -1;
+}
+
+.break {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.break h2 {
+    color: var(--container-text);
+}
+
+.break-timer {
+    font-size: 48px;
+    color: var(--container-text);
+    margin-top: 10px;
+}
+
+.music-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.music-controls input {
+    display: none;
+}
+
+.music-controls .controls button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    background: var(--primary-color);
+    color: var(--container-bg);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.music-controls .controls button:hover {
+    background: var(--primary-color-hover);
+}
+
+.music-controls ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    overflow-y: scroll;
+    /* scrollbar-color:var(--primary-color-hover)  */
+
+}
+
+/* width */
+.music-controls ul::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.music-controls ul::-webkit-scrollbar-track {
+    background: var(--primary-color-hover);
+    border-radius: 10px;
+}
+
+/* Handle */
+.music-controls ul::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background: var(--task-completed-bg);
+}
+
+/* Handle on hover */
+.music-controls ul::-webkit-scrollbar-thumb:hover {
+    background: var(--task-bg);
+}
+
+.music-controls li {
+    cursor: pointer;
+    background: var(--music-bg);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--task-text);
+}
+
+.music-controls .controls button svg {
+    fill: var(--container-bg);
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s ease;
+}
+
+.music-controls .controls button:hover svg {
+    fill: #98d7d6;
+}
+
+.todo-container {
+    flex: 1;
+    background: var(--container-bg);
+    padding: 20px;
+    border-radius: 15px;
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+    box-shadow: var(--box-shadow);
+    color: var(--container-text);
+}
+
+.todo-container h2 {
+    font-weight: 600;
+    color: var(--container-text);
+    margin-bottom: 20px;
+}
+
+.todo-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.todo-input input {
+    flex: 1;
+    padding: 10px;
+    border: var(--border);
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 10px;
+}
+
+.todo-input button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--container-bg);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s ease;
+}
+
+.todo-input button:hover {
+    background-color: var(--primary-color-hover);
+}
+
+#task-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+#task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: var(--border);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: var(--task-bg);
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s ease;
+}
+
+#task-list li.completed {
+    background-color: var(--task-completed-bg);
+}
+
+#task-list .task-text {
+    flex: 1;
+    text-align: left;
+}
+
+#task-list .task-text.completed {
+    text-decoration: line-through;
+    color: var(--task-completed-text);
+}
+
+.task-buttons {
+    display: flex;
+}
+
+.task-buttons button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s ease;
+    background-color: var(--primary-color);
+    color: var(--container-bg);
+}
+
+.task-buttons button:hover {
+    opacity: 0.8;
+}

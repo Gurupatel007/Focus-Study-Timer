@@ -151,6 +151,7 @@ function startTimer() {
     pauseButton.style.display = "inline-block";
     increaseTimeButton.style.display = "none";
     decreaseTimeButton.style.display = "none";
+    document.querySelector('.timer-circle').style.display = 'block'; 
 }
 
 function pauseTimer() {
@@ -171,6 +172,7 @@ function startBreak() {
     breakTime = 5 * 60;
     breakSection.style.display = "flex";
     updateBreakDisplay();
+    document.querySelector('.timer-circle').style.display = 'none';
     breakTimer = setInterval(() => {
         if (breakTime > 0) {
             breakTime--;
@@ -205,6 +207,7 @@ function resetTimer() {
     pauseButton.style.display = "none";
     continueButton.style.display = "none";
     resetButton.style.display = "none";
+    document.querySelector('.timer-circle').style.display = 'none'; 
 }
 
 function updateFocusAnimation() {

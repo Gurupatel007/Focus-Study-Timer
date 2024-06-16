@@ -110,7 +110,7 @@ h1 {
     flex: 1;
 }
 
-.timer-box {
+/* .timer-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,12 +118,12 @@ h1 {
     background: var(--container-bg);
     border-radius: 15px;
     box-shadow: var(--box-shadow);
-    /* padding: 40px 20px; */
     position: relative;
     overflow: visible;
-    min-height: 350px; /* Added min-height */
-}   
+    min-height: 350px; 
+}    */
 
+.timer-box,
 .music-box {
     display: flex;
     flex-direction: column;
@@ -136,19 +136,19 @@ h1 {
     overflow: hidden;
 }
 
-.timer-controls {
+/* .timer-controls {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 48px;
     font-weight: 400;
     position: relative;
-    z-index: 2; /* Ensure text and buttons are above the circle */
+    z-index: 2;
 }
 .timer-controls span {
     margin: -30px 20px;
-}
-
+} */
+.timer-controls,
 .music-controls .controls {
     display: flex;
     align-items: center;
@@ -158,7 +158,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-.timer-circle {
+/* .timer-circle {
     width: 200px;
     height: 200px;
     border: 10px solid var(--primary-color);
@@ -169,8 +169,8 @@ h1 {
     transform: translate(-50%, -50%);
     display: none;
     z-index: 1;
-    overflow: hidden; /* Add this line */
-}
+    overflow: hidden;
+} */
 
 .control-btn {
     font-size: 24px;
@@ -188,11 +188,15 @@ h1 {
     background: var(--primary-color-hover);
 }
 
-.buttons {
+/* .buttons {
     position: absolute;
     bottom: 10px; 
     left: 50%;
     transform: translateX(-50%);
+} */
+.buttons{
+    margin-bottom: 30px;
+    font-family: space Mono;
 }
 
 .main-btn {
